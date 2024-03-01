@@ -36,7 +36,7 @@ const SearchForm = () => {
     return (
         <Form {...form} >
             <form
-                className="p-6 space-x-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end bg-background rounded"
+                className="p-6 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end bg-background rounded"
                 onSubmit={form.handleSubmit(formSubmitHandler)}
             >
                 <FormField control={form.control} name="address" render={({ field }) => {
