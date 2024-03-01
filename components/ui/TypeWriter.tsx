@@ -14,7 +14,7 @@ const TypeWriter = () => {
             }}
             options={{
                 loop: false,
-                wrapperClassName: 'text-3xl sm:text-3xl lg:text-6xl font-bold text-center text-white',
+                wrapperClassName: 'text-3xl sm:text-3xl lg:text-[3.4rem] font-bold text-center text-white',
             }}
         />
     );

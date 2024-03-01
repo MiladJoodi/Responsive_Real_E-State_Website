@@ -1,4 +1,4 @@
-import { Bath, Bed, Link, Square } from "lucide-react";
+import { Bath, Bed, Link, Square, StarIcon } from "lucide-react";
 import { propertiesList } from "./Features";
 import Image from "next/image";
 
@@ -46,10 +46,28 @@ const PropertyCard = ({
                         <p className="text-muted-foreground">Price</p>
                         <p className="font-semibold">{price}</p>
                     </div>
-                    <div className="text-muted-foreground">Rating</div>
+                    {/* Rating and Stars */}
+                    <div>
+                        <p className="text-muted-foreground">Rating</p>
+                        <div className="flex gap-2 items-center">
+                            {Array(5).fill(0).map((_, index) => {
+                                return (
+                                    <div key={index} >
+                                        <StarIcon
+                                            fill={index < rating ? "orange" : "transparent"}
+                                            color="orange"
+                                            size={16}
+                                        />
+                                    </div>
+                                )
+                            })
+                            }
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
