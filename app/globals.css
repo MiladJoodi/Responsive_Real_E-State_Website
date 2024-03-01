@@ -76,6 +76,7 @@
 }
 
 .hero{
-  background-image: url("../public/home.jpg");
+  background-image: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.5)) ,url("../public/home.jpg");
+  background-position: 30%;
   background-size: cover;
 }
