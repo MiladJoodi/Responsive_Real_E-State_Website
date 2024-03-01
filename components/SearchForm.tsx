@@ -4,15 +4,17 @@ import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
-function generatePriceValue (){
+function generatePriceValue() {
     let price = []
-    for(let i=1; i<=6; i++){
+    for (let i = 1; i <= 6; i++) {
         price.push(i * 100);
     }
     return price;
 }
 
 const SearchForm = () => {
+
+    const prices = generatePriceValue()
 
     const form = useForm()
     return (
@@ -29,6 +31,7 @@ const SearchForm = () => {
                     )
                 }} />
 
+                {/* Categories */}
                 <FormField control={form.control} name="address" render={({ field }) => {
                     return (
                         <FormItem>
@@ -48,18 +51,49 @@ const SearchForm = () => {
                     )
                 }} />
 
-                <FormField control={form.control} name="address" render={({ field }) => {
+                {/* Min Price */}
+                <FormField
+                    control={form.control}
+                    name="min-price"
+                    render={({ field }) => {
+                        return (
+                            <FormItem>
+                                <FormLabel>Min. Price</FormLabel>
+                                <Select value={field.value} onValueChange={field.onChange}>
+                                    <SelectTrigger className="w-[180px]">
+                                        <SelectValue placeholder="Categories" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {prices.map((price) => (
+                                            <SelectItem key={price} value={price.toString()}>
+                                                {price}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </FormItem>
+
+                        )
+                    }} />
+
+                {/* Max Price */}
+                <FormField 
+                control={form.control} 
+                name="max-price" 
+                render={({ field }) => {
                     return (
                         <FormItem>
-                            <FormLabel>Categories</FormLabel>
+                            <FormLabel>Min. Price</FormLabel>
                             <Select value={field.value} onValueChange={field.onChange}>
                                 <SelectTrigger className="w-[180px]">
                                     <SelectValue placeholder="Categories" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="light">House</SelectItem>
-                                    <SelectItem value="dark">Apartment</SelectItem>
-                                    <SelectItem value="system">Office</SelectItem>
+                                    {prices.map((price) => (
+                                        <SelectItem key={price} value={price.toString()}>
+                                            {price}
+                                        </SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
                         </FormItem>
