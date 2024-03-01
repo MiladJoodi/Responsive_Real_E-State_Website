@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <div className="min-h-screen hero flex justify-center items-center">
             <div className="max-w-full flex flex-col gap-6 items-center pb-10">
-                <div className="space-y-4">
+                <div className="space-y-4 px-5">
                     <TypeWriter />
 
                     <p className="text-slate-300 text-center">

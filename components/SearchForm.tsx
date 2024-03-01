@@ -13,14 +13,32 @@ function generatePriceValue() {
     return price;
 }
 
+type FormValues = {
+    address : string,
+    categories: string,
+    minPrice: string,
+    maxPrice: string,
+}
+
 const SearchForm = () => {
 
+    const form = useForm<FormValues>({
+        defaultValues: {
+            address: "",
+        }
+    })
     const prices = generatePriceValue()
 
-    const form = useForm()
+    function formSubmitHandler(data: FormValues) {
+        console.log(data)
+    }
+
     return (
-        <Form {...form}>
-            <form className="p-6 max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end bg-background rounded">
+        <Form {...form} >
+            <form
+                className="p-6 space-x-4 w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end bg-background rounded"
+                onSubmit={form.handleSubmit(formSubmitHandler)}
+            >
                 <FormField control={form.control} name="address" render={({ field }) => {
                     return (
                         <FormItem>
@@ -33,7 +51,7 @@ const SearchForm = () => {
                 }} />
 
                 {/* Categories */}
-                <FormField control={form.control} name="address" render={({ field }) => {
+                <FormField control={form.control} name="categories" render={({ field }) => {
                     return (
                         <FormItem>
                             <FormLabel>Categories</FormLabel>
@@ -78,29 +96,29 @@ const SearchForm = () => {
                     }} />
 
                 {/* Max Price */}
-                <FormField 
-                control={form.control} 
-                name="maxPrice" 
-                render={({ field }) => {
-                    return (
-                        <FormItem>
-                            <FormLabel>Max. Price</FormLabel>
-                            <Select value={field.value} onValueChange={field.onChange}>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Max. Price" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {prices.map((price) => (
-                                        <SelectItem key={price} value={price.toString()}>
-                                            {price}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </FormItem>
+                <FormField
+                    control={form.control}
+                    name="maxPrice"
+                    render={({ field }) => {
+                        return (
+                            <FormItem>
+                                <FormLabel>Max. Price</FormLabel>
+                                <Select value={field.value} onValueChange={field.onChange}>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Max. Price" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        {prices.map((price) => (
+                                            <SelectItem key={price} value={price.toString()}>
+                                                {price}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectContent>
+                                </Select>
+                            </FormItem>
 
-                    )
-                }} />
+                        )
+                    }} />
 
                 <Button className="col-start-[1] col-end-[-1]">Search</Button>
 
