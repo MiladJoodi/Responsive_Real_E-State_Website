@@ -1,6 +1,7 @@
-import { Bath, Bed, Link, Square, StarIcon } from "lucide-react";
+import { Bath, Bed, Square, StarIcon } from "lucide-react";
 import { propertiesList } from "./Features";
 import Image from "next/image";
+import Link from "next/link";
 
 type PropertyCardProps = (typeof propertiesList)[0];
 
@@ -15,7 +16,8 @@ const PropertyCard = ({
     sqft,
 }: PropertyCardProps) => {
     return (
-        <div className="border rounded-md overflow-hidden">
+        <Link href="/">
+            <div className="border rounded-md overflow-hidden group">
             <div className="aspect-[16/10] overflow-hidden">
                 <Image
                     src={image}
@@ -68,6 +70,7 @@ const PropertyCard = ({
                 </div>
             </div>
         </div >
+        </Link>
     );
 }
 
