@@ -8,13 +8,13 @@ const TypeWriter = () => {
                 typeWriter
                     .typeString('Easy Way to Find Your Dream Home')
                     .start()
-                    .pauseFor(3000)
+                    // .pauseFor(1500)
                     // .deleteAll()
-                    .start()
+                    // .start()
             }}
             options={{
                 loop: false,
-                wrapperClassName: 'text-3xl sm:text-3xl lg:text-6xl font-bold text-center text-white',
+                wrapperClassName: 'text-3xl sm:text-3xl lg:text-6xl font-bold text-white',
             }}
         />
     );
