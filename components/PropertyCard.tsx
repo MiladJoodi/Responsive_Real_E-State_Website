@@ -16,7 +16,7 @@ const PropertyCard = ({
 }: PropertyCardProps) => {
     return (
             <div className="border rounded-md overflow-hidden">
-                <div>
+                <div className="aspect-[16/10] overflow-hidden">
                     <Image
                         src={image}
                         alt={name}
@@ -24,6 +24,9 @@ const PropertyCard = ({
                         height={420}
                         className="w-full transition-transform group-hover:scale-105"
                     />
+                </div>
+                <div>
+                    <p className="text-lg">{name}</p>
                 </div>
             </div>
     );
